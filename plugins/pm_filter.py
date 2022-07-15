@@ -91,20 +91,20 @@ async def next_page(bot, query):
         off_set = offset - 10
     if n_offset == 0:
         btn.append(
-            [InlineKeyboardButton("🡸 BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+            [InlineKeyboardButton("BACK ⤶", callback_data=f"next_{req}_{key}_{off_set}"),
              InlineKeyboardButton(f"📃 Pages {round(int(offset) / 10) + 1} / {round(total / 10)}",
                                   callback_data="pages")]
         )
     elif off_set is None:
         btn.append(
             [InlineKeyboardButton(f"🗓 {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
-             InlineKeyboardButton("NEXT 🡺", callback_data=f"next_{req}_{key}_{n_offset}")])
+             InlineKeyboardButton("⤷ NEXT", callback_data=f"next_{req}_{key}_{n_offset}")])
     else:
         btn.append(
             [
-                InlineKeyboardButton("🡸 BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+                InlineKeyboardButton("BACK ⤶", callback_data=f"next_{req}_{key}_{off_set}"),
                 InlineKeyboardButton(f"🗓 {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
-                InlineKeyboardButton("NEXT 🡺", callback_data=f"next_{req}_{key}_{n_offset}")
+                InlineKeyboardButton("⤷ NEXT", callback_data=f"next_{req}_{key}_{n_offset}")
             ],
         )
     try:
@@ -703,17 +703,17 @@ async def auto_filter(client, msg, spoll=False):
         btn.append(
                         [InlineKeyboardButton(text=f"🗓 1/{round(int(total_results) / 10)}", callback_data="pages"),
              InlineKeyboardButton('🗑', callback_data='close_data'),
-             InlineKeyboardButton(text="NEXT 🡺", callback_data=f"next_{req}_{key}_{offset}")]   
+             InlineKeyboardButton(text="⤷ NEXT", callback_data=f"next_{req}_{key}_{offset}")]   
         )
         btn.insert(0,
-            [InlineKeyboardButton(text="🔶 KC || Files Channel 🔶",url="https://t.me/+PKaP3oBEgTEyZjM1")]
+            [InlineKeyboardButton(text="🔶 KC || Files Channel 🔶",url="{CH_LINK}")]
         )
     else:
         btn.append(
             [InlineKeyboardButton(text="🗓 1/1", callback_data="pages")]
         )
         btn.insert(0,
-            [InlineKeyboardButton(text="🔶 KC || File Channel 🔶",url="https://t.me/+PKaP3oBEgTEyZjM1")]
+            [InlineKeyboardButton(text="🔶 KC || File Channel 🔶",url="{CH_LINK}")]
         )
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
